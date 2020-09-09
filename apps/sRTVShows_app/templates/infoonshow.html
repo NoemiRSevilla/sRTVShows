@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TV Show</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css.css' %}">  
+</head>
+<body>
+    <a href="/shows" class="badge badge-primary">Go Back</a>
+    {% if messages %}                            <!-- check if there are any messages -->
+    {% for message in messages %}            <!-- loop through the messages -->
+        <p>{{message | safe}}</p>                   <!-- display each message in a paragraph tag -->
+    {% endfor %}
+    {% endif %}
+    <h1>ID: {{show.id}}</h1>
+    <h5>Title: {{show.title}}</h5>
+    <h5>Network: {{show.network}}</h5>
+    <h5>Release Date: {{show.release}} </h5>
+    <h5>Description: {{show.description}} </h5>
+    <h5>Last Updated On: {{show.updated_at}} </h5>
+
+    <a href="/shows/{{show.id}}/edit" class="badge badge-primary">Edit</a>||
+    <a href="/shows/{{show.id}}/destroy" class="badge badge-primary">Delete</a>
+</body>
+</html>

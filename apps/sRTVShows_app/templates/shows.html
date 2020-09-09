@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semi-Restful Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="big container-fluid">
+        <h1>TV Shows</h1>
+        <div class="list container-fluid">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>{% for show in all_shows %}
+                    <th scope="row">{{show.id}}</th>
+                        <td>{{show.title}}</td>
+                        <td>{{show.network}}</td>
+                        <td>{{show.release}}</td>
+                        <td>
+                            <a href="/shows/{{show.id}}" class="badge badge-primary">Show</a>    
+                            <a href="/shows/{{show.id}}/edit" class="badge badge-primary">Edit</a>
+                            <a href="/shows/{{show.id}}/destroy" class="badge badge-primary">Delete</a>
+                        </td>
+                    </tr>
+                        {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <a href="/shows/new" class="badge badge-primary">Add a TV Show</a>
+    </div>
+</body>
+</html>
